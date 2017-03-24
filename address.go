@@ -9,10 +9,28 @@ package goenet
 import "C"
 
 import (
+	"encoding/binary"
+	"strconv"
+	"strings"
 	"unsafe"
 )
 
 type ENetAddress C.ENetAddress
+
+func (a *ENetAddress) GetHost() string {
+	var addr [4]byte
+	var str [4]string
+	binary.LittleEndian.PutUint32(addr[:], uint32(a.host))
+	for i, n := range addr {
+		str[i] = strconv.Itoa(int(n))
+	}
+
+	return strings.Join(str[:], ".")
+}
+
+func (a *ENetAddress) GetPort() uint16 {
+	return uint16(a.port)
+}
 
 func (a *ENetAddress) SetHost(h uint) {
 	a.host = C.enet_uint32(h)
