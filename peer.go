@@ -33,6 +33,10 @@ func (p *ENetPeer) Data() interface{} {
 
 // Public
 
+func (p *ENetPeer) Address() ENetAddress {
+	return (ENetAddress)(p.address)
+}
+
 func (p *ENetPeer) Send(channelID int, packet *ENetPacket) int {
 	return int(C.enet_peer_send((*C.ENetPeer)(p), C.enet_uint8(channelID), (*C.ENetPacket)(packet)))
 }

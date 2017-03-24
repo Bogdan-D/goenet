@@ -17,6 +17,10 @@ import (
 
 type ENetAddress C.ENetAddress
 
+func (a ENetAddress) String() string {
+	return fmt.Sprintf("%s:%d", a.GetHost(), a.GetPort())
+}
+
 func (a *ENetAddress) GetHost() string {
 	var addr [4]byte
 	var str [4]string
@@ -30,10 +34,6 @@ func (a *ENetAddress) GetHost() string {
 
 func (a *ENetAddress) GetPort() uint16 {
 	return uint16(a.port)
-}
-
-func (a *ENetAddress) String() string {
-	return fmt.Sprintf("%s:%s", a.GetHost(), a.GetPort())
 }
 
 func (a *ENetAddress) SetHost(h uint) {
