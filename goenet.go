@@ -14,10 +14,10 @@ encode and decode said data using the bytes module.
 package goenet
 
 /*
-#cgo CFLAGS: -I/usr/local/include/enet
-#cgo LDFLAGS: -L/usr/local/lib -lenet
+#cgo CFLAGS: -I${SRCDIR}/enet/include/
+#cgo LDFLAGS: -lenet
 
-#include "enet.h"
+#include "enet/enet.h"
 */
 import "C"
 
