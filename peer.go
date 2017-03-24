@@ -2,7 +2,6 @@ package goenet
 
 /*
 #cgo CFLAGS: -I${SRCDIR}/enet/include/
-#cgo LDFLAGS: -lenet
 
 #include "enet/enet.h"
 */
