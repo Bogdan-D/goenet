@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"encoding/binary"
+	"fmt"
 	"strconv"
 	"strings"
 	"unsafe"
@@ -30,6 +31,10 @@ func (a *ENetAddress) GetHost() string {
 
 func (a *ENetAddress) GetPort() uint16 {
 	return uint16(a.port)
+}
+
+func (a *ENetAddress) String() string {
+	return fmt.Sprintf("%s:%s", a.GetHost(), a.GetPort())
 }
 
 func (a *ENetAddress) SetHost(h uint) {
